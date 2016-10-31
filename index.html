@@ -1,11 +1,170 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<h1>Test</h1>
-	<h2>Heading level 2</h2>
-</body>
+﻿<!DOCTYPE html>
+<html ng-app="mart">
+	<head>
+		<base href="/mart_angular/" />
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MART</title>
+		<!-- css -->
+		<link rel="stylesheet" href="css/font.css">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/include/fotorama.css">
+		<link rel="stylesheet" href="css/include/nouislider.min.css">
+		<link rel="stylesheet" href="css/include/jquery.arcticmodal-0.3.css">
+		<link rel="stylesheet" href="css/include/chosen.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<!-- /css -->
+
+	</head>
+	<body ng-controller="HomeController">
+		<block-cart></block-cart>
+		<div id="top"></div>
+		<header class="fixed">
+			<div class="wrap wrap_size_1">
+
+				<!-- logo -->
+				<a href="/mart_angular/" class="logo black">
+					<div class="ico"></div>
+					<span>Modern Art Recovers Taste</span>
+				</a>
+				<!-- /logo -->
+
+				<!-- cart -->
+				<a href="cart" class="block_radius top_block_cart">
+					Корзина: {{cartItemsCount}}
+				</a>
+				<!-- /cart -->
+
+				<div class="top_sign_block ng-hide" ng-show="!globals.currentUser.email">
+					<span data-btn="sign_in">Log In</span> / <span data-btn="sign_up">Sign Up</span>
+				</div>
+				<div class="profile_bttn ng-hide" ng-show="globals.currentUser.email">
+					{{ globals.currentUser.email }}
+					<div class="dropdown">
+						<ul>
+							<li><a href="personal-area">Личный кабинет</a></li>
+							<li class="ng-hide" ng-show="globals.currentUser.status == 'admin'"><a href="administrate">Администрирование</a></li>
+							<li><span class="logout_bttn" ng-click="logout()">Выйти</span></li>
+						</ul>
+					</div>
+				</div>
+				<!-- /sign block -->
+				
+				<!-- navigation menu -->
+				<nav class="block_radius nav_top" ng-controller="navCtrl">
+					<a ng-repeat="link in nav" href="{{ link.url }}" ng-class="navClass('{{ '/' + link.url}}')">
+						{{link.title}}
+					</a>
+				</nav>
+				<!-- /navigation menu -->
+
+			</div>
+		</header>
+		
+		<ng-view></ng-view>
+
+		<footer>
+			<div class="wrap wrap_size_1">
+
+				<!-- logo -->
+				<a href="#" class="logo white">
+					<div class="ico"></div>
+					<span>Modern Art Recovers Taste</span>
+				</a>
+				<!-- /logo -->
+				
+				<!-- search block -->
+				<div class="bttn bttn_size_1 search_bttn" data-btn="search">
+					Search
+				</div>
+				<!-- /search block -->
+				
+				<!-- navigation menu -->
+				<nav class="block_radius nav_top" ng-controller="navCtrl">
+					<a ng-repeat="link in nav" href="{{ link.url }}" ng-class="navClass('{{ '/' + link.url}}')">
+						{{link.title}}
+					</a>
+					</a>
+				</nav>
+				<!-- /navigation menu -->
+
+			</div>
+
+		</footer>
+
+		<!-- modal windows -->
+
+		<block-auth></block-auth>
+
+		<block-notifications></block-notifications>
+
+		
+		<!-- /modal windows -->
+
+		
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/include/jquery-2.1.4.min.js"><\/script>')</script>
+		<script src="include/fotorama.js"></script>
+		<script src="include/nouislider.min.js"></script>
+		<script src="http://packery.metafizzy.co/packery.pkgd.min.js"></script>
+		<script src="include/chosen.jquery.min.js"></script>
+
+		<script src="include/angular.min.js"></script>
+		<script src="include/angular-route.min.js"></script>
+		<script src="include/angular-cookies.min.js"></script>
+		<script src="include/jquery.arcticmodal-0.3.min.js"></script>
+		<script src="include/angular-chosen.min.js"></script>
+
+		<script src="app.js"></script>
+
+		<!-- publications -->
+		<script src="Publications/controllers.js"></script>
+		<script src="Publications/directives.js"></script>
+		<script src="Publications/services.js"></script>
+		<!-- /publications -->
+
+		<!-- artworks -->
+		<script src="Artworks/controllers.js"></script>
+		<script src="Artworks/directives.js"></script>
+		<script src="Artworks/services.js"></script>
+		<!-- /artworks -->
+
+		<!-- cart -->
+		<script src="Cart/controllers.js"></script>
+		<script src="Cart/directives.js"></script>
+		<script src="Cart/services.js"></script>
+		<!-- /cart -->
+
+		<!-- home -->
+		<script src="Home/controllers.js"></script>
+		<script src="Home/directives.js"></script>
+		<script src="Home/services.js"></script>
+		<!-- /home -->
+
+		<!-- login, Registration, Recovery -->
+		<script src="User/controllers.js"></script>
+		<script src="User/directives.js"></script>
+		<script src="User/services.js"></script>
+		<!-- /login, Registration, Recovery -->
+
+		<!-- navigation -->
+		<script src="Navigation/controllers.js"></script>
+		<!-- /navigation -->
+
+		<!-- personal area -->
+		<script src="PersonalArea/controllers.js"></script>
+		<!-- /personal area -->
+
+		<!-- Admin -->
+		<script src="Admin/controllers.js"></script>
+		<script src="Admin/directives.js"></script>
+		<script src="Admin/services.js"></script>
+		<!-- /Admin -->
+
+
+		<!--<script src="js/services.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/directives.js"></script>-->
+
+	</body>
 </html>
