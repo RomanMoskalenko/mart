@@ -1,0 +1,64 @@
+<h2>
+	Поступившие заказы
+</h2>
+<div class="table draft_artworks">
+	<div class="tr heading">
+		<div class="td">
+			Name
+		</div>
+		<div class="td">
+			Phone
+		</div>
+		<div class="td">
+			Address
+		</div>
+		<div class="td">
+			Comment
+		</div>
+		<div class="td">
+			Artworks
+		</div>
+		<div class="td">
+			Date
+		</div>
+		<div class="td">
+			Total
+		</div>
+		<div class="td">
+			Controlls
+		</div>
+	</div>
+	<div class="tr" ng-repeat="order in orders" ng-hide="hiddenOrders.indexOf(order.id) >= 0">
+		<div class="td">
+			{{order.client_name}}
+		</div>
+		<div class="td">
+			{{order.phone}}
+		</div>
+		<div class="td">
+			{{order.address}}
+		</div>
+		<div class="td">
+			{{order.comments}}
+		</div>
+		<div class="td">
+			<ul>
+				<li ng-repeat="artwork in order.artworks track by $index">
+					{{artwork.title}}
+					<img src="{{artwork.image}}" alt="" style="width: 50px">
+					
+				</li>
+			</ul>
+		</div>
+		<div class="td">
+			{{order.date}}
+		</div>
+		<div class="td">
+			{{order.price}}
+		</div>
+		<div class="td">
+			<button ng-click="doneOrder(order.id)">Выполнен</button>
+			<button ng-click="cancelOrder(order.id)">Отклонен</button>
+		</div>
+	</div>
+</div>

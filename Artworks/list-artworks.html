@@ -1,0 +1,30 @@
+<div class="items_list" ng-controller="artworksCtrl">
+	<div class="item" ng-repeat="artwork in artworks | filter:search.category" data-id="{{ artwork.id }}">
+		<!-- item image -->
+		<div class="img" style="background-image: url({{ artwork.thumb }})"><div class="shadow"></div></div>
+		<!-- /item image -->
+
+		<!-- item content -->
+		<div class="plate">
+			<div class="plate_content">
+				<div class="price">
+					${{ artwork.price }}
+				</div>
+				<div class="name">
+					<a href="artworks/{{ artwork.id }}">{{ artwork.title }}</a>
+				</div>
+				<div class="author">
+					by <a href="artists/{{ artwork.author }}">{{ artwork.author }}</a>
+				</div>
+				<div class="bttn bttn_size_1 bttn_add_to_cart" ng-click="addToCart(artwork.id)" ng-hide="isTheItemInCart(artwork.id) == true">
+					Add to cart
+				</div>
+				<div class="bttn bttn_size_1 bttn_remove_from_cart ng-hide" ng-click="removeFromCartById(artwork.id)" ng-show="isTheItemInCart(artwork.id) == true">
+					&times; Remove from cart
+				</div>
+			</div>
+		</div>
+		<!-- /item content -->
+
+	</div>
+</div>

@@ -1,0 +1,126 @@
+<div style="display: none;" ng-controller="userCtrl as user">
+
+
+    <div class="box-modal" data-popup-id="sign_up">
+        <div class="box-modal_close arcticmodal-close">&times;</div>
+        <div class="block_radius title">
+            Registration
+        </div>
+        <div class="social">
+            <div class="column">
+                <a href="#">
+                    <span class="socicon socicon-facebook"></span>Log in using facebook
+                </a>
+            </div>
+            <div class="column">
+                <a href="#">
+                    <span class="socicon socicon-vkontakte"></span>Log in using vkontakte
+                </a>
+            </div>
+        </div>
+        <form id="form-sign-up" role="form">
+            <div class="isArtist">
+                <label>
+                    <div class="checkbox"><input type="checkbox"><div class="view"></div></div>
+                    <span>Want to sell your ART?</span>
+                </label>
+            </div>
+            <div class="username_block ng-hide">
+                <input type="text" placeholder="Username">
+                <div class="excerpt">
+                    This is used as a shareable link to your profile, so letters and numbers only please. <span>Choose wisely. This cannot be changed.</span>
+                </div>
+            </div>
+            <input type="text" placeholder="E-mail" ng-model="user.email">
+            <input type="password" placeholder="Password" ng-model="user.password">
+            <!--<input type="password" placeholder="Confirm Password" ng-model="user.confirmPassword">-->
+            <!--<div class="checkboxes">
+                <label>
+                    <div class="checkbox"><input type="checkbox" ng-model="user.isReceive"><div class="view"></div></div>
+                    <span>Do you receive our blablabla</span>
+                </label>
+                <label>
+                    <div class="checkbox"><input type="checkbox" ng-model="user.isFeedback"><div class="view"></div></div>
+                    <span>I wanna subscribe to your fresh news</span>
+                </label>
+            </div>-->
+            <div ng-click="user.register()" class="bttn bttn_size_1 bttn_sign_up">
+                Send
+            </div>
+        </form>
+        <div class="link">
+            <span data-btn="sign_in">I am already signed up!</span>
+        </div>
+    </div>
+
+
+
+	<div class="box-modal" data-popup-id="sign_in">
+        <div class="box-modal_close arcticmodal-close">&times;</div>
+        <div class="block_radius title">
+        	Log in
+        </div>
+        <div class="social">
+        	<div class="column">
+        		<a href="#">
+        			<span class="socicon socicon-facebook"></span>Log in using facebook
+        		</a>
+        	</div>
+        	<div class="column">
+        		<a href="#">
+        			<span class="socicon socicon-vkontakte"></span>Log in using vkontakte
+        		</a>
+        	</div>
+        </div>
+        <form id="form-sign-in">
+        	<input type="text" placeholder="E-mail" name="email" ng-model="email">
+        	<input type="password" placeholder="Password" name="password" ng-model="password">
+        	<div class="bttn bttn_size_1 bttn_sign_in" ng-click="login()">
+        		Send
+        	</div>
+        	<div class="link forgot">
+        		<span data-btn="recovery">Forgot password?</span>
+        	</div>
+        </form>
+        <div class="link">
+        	Don't have an account. <span data-btn="sign_up">Sign up</span>
+        </div>
+    </div>
+
+
+
+    <div class="box-modal" data-popup-id="recovery">
+        <div class="box-modal_close arcticmodal-close">&times;</div>
+         <div class="block_radius title">
+            Forgot password
+        </div>
+
+        <div class="part ng-hide" data-part="step_1" ng-show="recovery.step === 1">
+            <input type="email" placeholder="E-mail">
+            <div class="bttn bttn_size_1 bttn_next_step" data-btn="to_step_2">
+                Step 1/3
+            </div>
+        </div>
+
+        <div class="part ng-hide" data-part="step_2" ng-show="recovery.step === 2" >
+            <label>
+                Authorithation code send to your mail
+            </label>
+            <input type="email" placeholder="Enter code">
+            <div class="bttn bttn_size_1 bttn_next_step" data-btn="to_step_3">
+                Step 2/3
+            </div>
+        </div>
+
+        <div class="part ng-hide" data-part="step_3" ng-show="recovery.step === 3" >
+            <input type="password" placeholder="New Password">
+            <input type="password" placeholder="Confirm New Password">
+            <div class="bttn bttn_size_1 bttn_next_step" data-btn="send_recovery">
+                Step 3/3
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

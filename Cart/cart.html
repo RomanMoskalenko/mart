@@ -1,0 +1,81 @@
+<!-- content -->
+<main class="content page_newin">
+    <section>
+        <div class="wrap wrap_size_2">
+            <div class="cart_block">
+                <div class="steps">
+                    <div class="bttn bttn_size_1 cartStepTitle" ng-class="{'active': activeStep == 0}" data-step="1.">Shopping Cart</div>
+                    <div class="bttn bttn_size_1 cartStepTitle" ng-class="{'active': activeStep == 1}" data-step="2.">Shipping Info</div>
+                    <div class="bttn bttn_size_1 cartStepTitle" ng-class="{'active': activeStep == 2}" data-step="3.">Billing Info</div>
+                </div>
+                <div class="ng-hide" ng-show="activeStep == 0">
+                    <div class="table table_cart">
+                        <div class="tr heading">
+                            <div class="td">Your cart</div>
+                            <div class="td center">Price</div>
+                            <div class="td center">Qty</div>
+                            <div class="td center">Subtotal</div>
+                            <div class="td center">Del</div>
+                        </div>
+                        <div class="tr" ng-repeat="item in cartItems track by $index">
+                            <div class="td">
+                                <a href="artworks/{{item.id}}"><div class="item_image" style="background-image: url({{item.thumb}})"></div></a>
+                                <div class="item_content">
+                                    <a href="artworks/{{item.id}}"><div class="title">{{item.title}}</div></a>
+                                    <div class="author">by <a href="artists/{{item.author}}">{{item.author}}</a></div>
+                                    <div class="excerpt">
+                                        Fine Art Paper / Small: 88x104 / Framed in Black Wood
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="td center">{{item.price}}$</div>
+                            <div class="td center">
+                                <button ng-click="minusOneItem($index)">-</button>
+                                <div class="qty_val">{{item.quantity}}</div>
+                                <button ng-click="plusOneItem($index)">+</button>
+                            </div>
+                            <div class="td center">{{ getPriceByIndex($index) }}$</div>
+                            <div class="td center">
+                                <button ng-click="removeFromCartByIndex($index)">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block_total_price">
+                        Total: {{priceTotal}}$
+                    </div>
+                    <div class="bttn bttn_size_1 bttn_cart_next_step" ng-click="cartNextStep()">
+                        Next Step >
+                    </div>
+                </div>
+                <div class="ng-hide" ng-show="activeStep == 1">
+                    <h2>Введите свои данные</h2>
+
+                    <div class="client_data">
+                        <input type="text" placeholder="ФИО" ng-model="orderData.client_name">
+                        <input type="text" placeholder="Телефон" ng-model="orderData.client_phone">
+                        <input type="text" placeholder="Адрес доставки" ng-model="orderData.client_address">
+                        <textarea placeholder="Комментарий" ng-model="orderData.comment"></textarea>
+                    </div>
+
+                    <div class="bttn bttn_size_1 bttn_cart_prev_step" ng-click="cartPrevStep()">
+                        < Prev Step
+                    </div>
+                    <div class="bttn bttn_size_1 bttn_cart_next_step" ng-click="cartNextStep()">
+                        Next Step >
+                    </div>
+                </div>
+                <div class="ng-hide" ng-show="activeStep == 2">
+                    <h2>Счет</h2>
+                    что то тут
+                    <div class="bttn bttn_size_1 bttn_cart_prev_step" ng-click="cartPrevStep()">
+                        < Prev Step
+                    </div>
+                    <div class="bttn bttn_size_1 bttn_cart_next_step" ng-click="submit();">
+                        Send
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+<!-- /content -->

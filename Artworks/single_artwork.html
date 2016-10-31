@@ -1,0 +1,84 @@
+<!-- content -->
+<main class="content">
+	<section class="section_margin page_product">
+		<div class="wrap wrap_size_2">
+			<div class="preview_part">
+				<div class="preview_block">
+					<div class="cell">
+						<img src="{{ artwork.image }}" alt="">
+					</div>
+				</div>
+				<div class="shares">
+					<div class="share">s</div>
+					<div class="to_wishlist">w</div>
+				</div>
+			</div>
+			<div class="details_part">
+				<div class="tabs_heading">
+					<div class="tab_link" ng-class="{'active': artwork.users_details.artwork_type == 'print'}" ng-click="artwork.users_details.artwork_type = 'print'">
+						Prints
+					</div>
+					<div class="tab_link" ng-class="{'active': artwork.users_details.artwork_type == 'original'}" ng-click="artwork.users_details.artwork_type = 'original'">
+						Original
+					</div>
+				</div>
+				<h1>
+					{{ artwork.title }}
+				</h1>
+				<div class="author">
+					by <a href="artists/{{ artwork.author }}">{{ artwork.author }}</a>
+				</div>
+				<div class="ng-hide tab" ng-show="artwork.users_details.artwork_type === 'print'">
+					<div class="part">
+						
+						<label>
+							<div class="radio"><input type="radio" name="canvas_type" ng-model="artwork.users_details.canvas_type"><div class="view"></div></div>
+							<span>Fine Art Paper</span>
+						</label>
+						<label>
+							<div class="radio"><input type="radio" name="canvas_type" ng-model="artwork.users_details.canvas_type"><div class="view"></div></div>
+							<span>Canvas</span>
+						</label>
+					</div>
+					<div class="part">
+						<label>
+							<div class="label">
+								Size
+							</div>
+							<select ng-model="artwork.users_details.size" chosen disable-search="true" data-placeholder="Choose" class="chosen-select" ng-change="selectChange()">
+								<option value="">Choose</option>
+								<option value="small">Small</option>
+								<option value="medium">Medium</option>
+							</select>
+						</label>
+						<label>
+							<div class="label">
+								Frame
+							</div>
+							<select ng-model="artwork.users_details.frame" chosen disable-search="true" data-placeholder="Choose" class="chosen-select" ng-change="selectChange()">
+								<option value="">Choose</option>
+								<option value="small">Black Wood</option>
+								<option value="medium">Medium</option>
+							</select>
+						</label>
+					</div>
+				</div>
+				<div class="ng-hide tab" ng-show="artwork.users_details.artwork_type === 'original'">
+					
+				</div>
+				<div class="total_block">
+					<div class="price">
+						$ 3300.00
+					</div>
+					<div class="bttn bttn_size_1 bttn_add_to_cart" ng-click="addToCart()">
+						Add to cart
+					</div>
+				</div>
+				<div class="description">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit a non cum? Nam rem enim mollitia eius nemo in facere ipsam adipisci, harum quia iure, esse veniam alias! Voluptatum, ipsum!
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+<!-- /content -->

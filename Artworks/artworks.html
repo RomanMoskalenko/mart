@@ -1,0 +1,175 @@
+<!-- content -->
+		<main class="content">
+			<section class="section_margin page_all">
+				<div class="wrap wrap_size_2">
+					<div class="top">
+						<div class="block_radius section_name left">
+							New In
+						</div>
+						<div class="sort_by right">
+							<select class="chosen-select">
+								<option value="all">Sort by</option>
+								<option value="1">Style 1</option>
+								<option value="2">Style 2</option>
+							</select>
+						</div>
+					</div>
+
+					<!-- filters -->
+					<aside class="search_parameters">
+						<div class="category">
+							<a href="#" ng-click="filterByCategory($event, '')" ng-class="{'active': search.category === ''}">All</a>
+							<a href="#" ng-click="filterByCategory($event, 'painting')" ng-class="{'active': search.category === 'painting'}">Painting</a>
+							<a href="#" ng-click="filterByCategory($event, 'photography')" ng-class="{'active': search.category === 'photography'}">Photography</a>
+							<a href="#" ng-click="filterByCategory($event, 'collage')" ng-class="{'active': search.category === 'collage'}">Collage</a>
+							<a href="#" ng-click="filterByCategory($event, 'drawing')" ng-class="{'active': search.category === 'drawing'}">Drawing</a>
+							<a href="#" ng-click="filterByCategory($event, 'sculpture')" ng-class="{'active': search.category === 'sculpture'}">Sculpture</a>
+						</div>
+
+						<div class="part">
+							<div class="part_heading">
+								<span>Price</span>
+								<div class="excerpt">
+									$0 - 20,000$
+								</div>
+							</div>
+
+							<div class="slider-draggable" id="price_slider" data-min="{{priceRange.min}}" data-max="{{priceRange.max}}" data-from="{{search.range.from}}" data-to="{{search.range.to}}" nouislider></div>
+
+							<select ng-model="search.style" chosen disable-search="true" data-placeholder="Choose" class="chosen-select">
+								<option value="">Choose</option>
+								<option value="small">Small</option>
+								<option value="medium">Medium</option>
+							</select>
+							
+
+						</div>
+
+						<div class="part">
+							<div class="part_heading">
+								<span>Orientation</span>
+							</div>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox">
+									<div class="view"></div>
+								</div>
+								<span>All</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox" checked>
+									<div class="view"></div>
+								</div>
+								<span>Vertical</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox">
+									<div class="view"></div>
+								</div>
+								<span>Horizontal</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox">
+									<div class="view"></div>
+								</div>
+								<span>Square</span>
+							</label>
+						</div>
+
+						<div class="part">
+							<div class="part_heading">
+								<span>Size</span>
+							</div>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox">
+									<div class="view"></div>
+								</div>
+								<span>Small</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox" checked>
+									<div class="view"></div>
+								</div>
+								<span>Medium</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox" checked>
+									<div class="view"></div>
+								</div>
+								<span>Large</span>
+							</label>
+							<label>
+								<div class="checkbox">
+									<input type="checkbox">
+									<div class="view"></div>
+								</div>
+								<span>Extra Large</span>
+							</label>
+						</div>
+
+						<div class="part ng-hide">
+							<div class="part_heading">
+								<span>Color</span>
+							</div>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam aliquam sunt non.
+							</p>
+						</div>
+
+					</aside>
+					<!-- /filters -->
+					<ul class="list items_list">
+
+						<div class="item" ng-repeat="artwork in artworks | limitTo:postsPerPage:postsOffset | filter:search.category | filter:priceFilter" data-id="{{ artwork.id }}">
+							
+							<div class="img" style="background-image: url({{ artwork.image }})"><div class="shadow"></div></div>
+							
+
+							<div class="plate">
+								<div class="plate_content">
+									<div class="price">
+										${{ artwork.price }}
+									</div>
+									<div class="name">
+										<a href="artworks/{{ artwork.id }}">{{ artwork.title }}</a>
+									</div>
+									<div class="author">
+										by <a href="artists/{{ artwork.author }}">{{ artwork.author }}</a>
+									</div>
+									<div class="bttn bttn_size_1 bttn_add_to_cart" ng-click="addToCart(artwork.id)" ng-hide="isTheItemInCart(artwork.id) == true">
+										Add to cart
+									</div>
+									<div class="bttn bttn_size_1 bttn_remove_from_cart ng-hide" ng-click="removeFromCartById(artwork.id)" ng-show="isTheItemInCart(artwork.id) == true">
+										&times; Remove from cart
+									</div>
+								</div>
+							</div>
+
+
+						</div>
+
+					</ul>
+					<ul class="pagination"></ul>
+				</div>
+			</section>
+			<div class="posts_controlls">
+				<div class="wrap wrap_size_2">
+
+					<a href="artworks/?page={{prevPageId}}" ng-click="prevPage($event)" class="bttn bttn_size_1 post_prev">
+						Previous page
+					</a>
+
+					<a href="artworks/?page={{nextPageId}}" ng-click="nextPage($event)" class="bttn bttn_size_1 post_next">
+						Next page
+					</a>
+
+				</div>
+			</div>
+		</main>
+		<!-- /content -->

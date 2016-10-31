@@ -1,0 +1,30 @@
+<h2>Добавить публикацию</h2>
+<!--<div class="block_new_publication">
+	<input type="text" placeholder="Title" ng-model="publication.title">
+	<textarea placeholder="Content" ng-model="publication.text"></textarea>
+	<input type="text" placeholder="Excerpt" ng-model="publication.excerpt">
+	<div class="input_file">
+			<input type="file" id="upload_artwork" fileread>
+		</div>
+	<label><input type="radio" name="publication_type" value="draft" ng-model="publication.status">Draft</label>
+	<label><input type="radio" name="publication_type" value="pending" ng-model="publication.status">Pending</label>
+	<label><input type="radio" name="publication_type" value="publish" ng-model="publication.status">Publish</label>
+	<button ng-click="submit()">Send</button>
+</div>-->
+
+Главное изображение
+<div class="input_file">
+	<input type="file" id="upload_artwork" fileread>
+</div>
+
+Заголовок
+<input type="text" placeholder="Title" ng-model="publication.title">
+
+Цитата
+<input type="text" placeholder="Excerpt" ng-model="publication.excerpt">
+
+<label><input type="radio" name="publication_type" value="draft" ng-model="publication.status">Draft</label>
+	<label><input type="radio" name="publication_type" value="pending" ng-model="publication.status">Pending</label>
+	<label><input type="radio" name="publication_type" value="publish" ng-model="publication.status">Publish</label>
+<summernote height="400" ng-model="publication.text"></summernote>
+<button ng-click="submit()">Send</button>

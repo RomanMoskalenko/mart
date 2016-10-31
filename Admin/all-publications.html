@@ -1,0 +1,81 @@
+<h2>
+	Все опубликованные публикации
+</h2>
+<!--<div class="table">
+	<div class="tr">
+		<div class="td">Title</div>
+		<div class="td">Img</div>
+		<div class="td">Slider</div>
+	</div>
+	<div class="tr" ng-repeat="publication in publications track by $index">
+		<div class="td">{{publication.title}}</div>
+		<div class="td"><img src="{{publication.image}}" style="max-width: 50px"></div>
+		<div class="td"><input type="checkbox" ng-model="publication.is_slider" ng-change="isSliderChange(publication.id, $index)">{{publications[$index].is_slider}}</div>
+	</div>
+</div>-->
+<!--<select ng-model="filter.status">
+	<option value="publish" ng-selected="filter.status === 'publish'">Publish</option>
+	<option value="trash" ng-selected="filter.status === 'trash'">Trash</option>
+	<option value="draft" ng-selected="filter.status === 'draft'">Draft</option>
+	<option value="pending" ng-selected="filter.status === 'pending'">Pending</option>
+</select>-->
+<table datatable="ng" dt-options="dtOptions" dt-instance="dtInstance" class="row-border hover admin_publications_table">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Excerpt</th>
+        <th>Preview</th>
+        <th>Slider</th>
+        <th>Status</th>
+        <th>Change Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="publication in publications track by $index">
+        <td>{{publication.id}}</td>
+    	<td>
+    		{{publication.title}}
+    	</td>
+    	<td>
+    		<span class="excerpt">{{publication.excerpt}}</span>
+    	</td>
+    	<td class="td">
+    		<a href="{{publication.image}}" target="_blank"><img src="{{publication.image}}" style="max-width: 50px"></a>
+    	</td>
+    	<td>
+    		<div class="checkbox"><input type="checkbox" ng-model="publication.is_slider" ng-change="isSliderChange(publication.id, $index)"><div class="view"></div></div>
+    	</td>
+    	<td>
+            <span class="status_{{publication.status}}">{{publication.status}}</span>
+    	</td>
+        <td>
+            <select ng-model="publication.status" ng-change="statusChange(publication.id, publication.status)">
+                <option value="publish">Publish</option>
+                <option value="trash">Trash</option>
+                <option value="draft">Draft</option>
+                <option value="pending">Pending</option>
+            </select>
+        </td>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Excerpt</td>
+            <td>Preview</td>
+            <td>Slider</td>
+            <td class="column_select">All</td>
+            <td>
+                Change Status
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<!--<select ng-model="publication.status" ng-change="statusChange(publication.id, publication.status)">
+                <option value="publish">Publish</option>
+                <option value="trash">Trash</option>
+                <option value="draft">Draft</option>
+                <option value="pending">Pending</option>
+            </select>-->

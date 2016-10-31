@@ -1,0 +1,30 @@
+<!-- content -->
+	<main class="content page_personal_area">
+		<div class="wrap wrap_size_2">
+			
+			<!-- if user -->
+			
+			<p ng-if="globals.currentUser.status == 'user'">
+				Ты никакой не художник. Поэтому ты не заполнишь форму ниже и не заработаешь денег. Ты можешь только сменить свой пароль.
+			</p>
+
+			<!-- /user -->
+
+			<!-- if artist -->
+			
+			<!--<p ng-if="globals.currentUser.status == 'artist'">
+				Ты - художник. Заполни форму ниже чтобы поделиться совим творчеством и заработать денег!</br>
+				Твой юзернейм - {{ globals.currentUser.username }}
+			</p>-->
+
+			<upload-art ng-if="globals.currentUser.status == 'artist'"></upload-art>
+
+			<!-- /artist -->
+			
+			
+			
+			<!---->
+
+		</div>
+	</main>
+<!-- /content -->

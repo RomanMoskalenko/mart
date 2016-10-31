@@ -1,0 +1,44 @@
+<h2>Поступившие работы (неподтвержденные)</h2>
+<div class="table draft_artworks">
+	<div class="tr heading">
+		<div class="td">
+			Title
+		</div>
+		<div class="td">
+			Artist
+		</div>
+		<div class="td">
+			Artwork
+		</div>
+		<div class="td">
+			Price
+		</div>
+		<div class="td">
+			Date
+		</div>
+		<div class="td">
+			Controlls
+		</div>
+	</div>
+	<div class="tr" ng-repeat="artwork in newArtworks" ng-hide="hiddenArtworks.indexOf(artwork.id) >= 0">
+		<div class="td">
+			{{ artwork.title }}
+		</div>
+		<div class="td">
+			<a href="artists/{{ artwork.author }}">{{ artwork.author }}</a>
+		</div>
+		<div class="td">
+			<a href="{{ artwork.image }}" target="_blank"><img src="{{ artwork.image }}" class="art" alt=""></a>
+		</div>
+		<div class="td">
+			$ {{ artwork.price }}
+		</div>
+		<div class="td">
+			{{ artwork.date }}
+		</div>
+		<div class="td">
+			<button ng-click="publishArt(artwork.id)">Опубликовать</button>
+			<button ng-click="cancelArt(artwork.id)">Отклонить</button>
+		</div>
+	</div>
+</div>

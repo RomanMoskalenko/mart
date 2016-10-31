@@ -1,0 +1,13 @@
+<div class="publications_list packery">
+
+	<a href="publications/{{ publication.id }}" class="item" ng-repeat="publication in publications" packery>
+		<img src="{{ publication.image }}" alt="">
+		<h6>
+			{{ publication.title }}
+		</h6>
+		<div class="text">
+			{{ publication.excerpt }}
+		</div>
+	</a>
+
+</div>
